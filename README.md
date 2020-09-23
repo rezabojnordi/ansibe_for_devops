@@ -11,7 +11,8 @@ ansible-playbook -i inventory run.yml --tags test
 
 
 ## change ip for backup db
-###### step1: cd /mysql/
+###### step1i:
+cd /mysql/
 ##### vim inventory
 ip1
 
