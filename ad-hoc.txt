@@ -1,0 +1,77 @@
+$ ansible test -a "df -h"
+
+$ ansible multi -a "free -m"
+
+$ ansible multi -a "date"
+
+##Make changes using Ansible modules
+##We want to install the NTP daemon on the server to keep the time in sync. Instead of
+##running the command yum install -y ntp on each of the servers, we’ll use ansible’s
+##yum module to do the same (just like we did in the playbook example earlier, but this
+##time using an ad-hoc command).
+
+
+$ ansible multi -b -m yum -a "name=ntp state=present"
+
+
+$ ansible test -b -m apt -a "name=ntp state=present"
+
+##The -b option (alias for --become) tells Ansible to run the command with
+##become (basically, run commands with ‘sudo’. This will work fine with our
+##Vagrant VMs, but if you’re running commands against a server where your
+##user account requires a password for privilege escalation, you should also
+##pass in -K (alias for --ask-become-pass), so you can enter your password
+##when Ansible needs it.
+
+##yum 
+$ ansible test -b -m service -a "name=ntpd state=started enabled=yes"
+
+##apt 
+$ ansible test -b -m service -a "name=ntp state=started enabled=yes"
+
+##yum
+$ ansible test-b -a "service ntpd stop"
+$ ansible test -b -a "ntpdate -q 0.rhel.pool.ntp.org"
+$ ansible test -b -a "service ntpd start"
+
+##apt
+
+$ ansible test-b -a "service ntp stop"
+$ ansible test -b -a "ntpdate -q 0.rhel.pool.ntp.org"
+$ ansible test -b -a "service ntpd start"
+
+
+##yum
+$ ansible app -b -m yum -a "name=MySQL-python state=present"
+$ ansible app -b -m yum -a "name=python-setuptools state=present"
+$ ansible app -b -m easy_install -a "name=django<2 state=present"
+
+##apt
+$ ansible app -b -m apt-a "name=MySQL-python state=present"
+$ ansible app -b -m apt-a "name=python-setuptools state=present"
+$ ansible app -b -m easy_install -a "name=django<2 state=present"
+
+$ ansible app -a "python -c 'import django; \
+print django.get_version()'"
+
+
+$ ansible db -b -m yum -a "name=mariadb-server state=present"
+$ ansible db -b -m service -a "name=mariadb state=started \
+enabled=yes"
+$ ansible db -b -a "iptables -F"
+$ ansible db -b -a "iptables -A INPUT -s 192.168.60.0/24 -p tcp \
+-m tcp --dport 3306 -j ACCEPT"
+
+
+$ ansible db -b -m yum -a "name=MySQL-python state=present"
+$ ansible db -b -m mysql_user -a "name=django host=% password=12345 \
+priv=*.*:ALL state=present"
+
+$ ansible db -b -m yum -a "name=MySQL-python state=present"
+$ ansible db -b -m mysql_user -a "name=django host=% password=12345 \
+priv=*.*:ALL state=present"
+
+At this point, you should be able to create or deploy a Django application on the app
+servers, then point it at the database server with the username django and password
+12345.
+

@@ -1,0 +1,17 @@
+---
+- name: Dump multiple databases
+  mysql_db:
+    state: dump
+    name: "{{ item }}"  
+    target: "{{ path_backup }}{{ item }}.sql"
+    login_user: root
+    login_password: ""
+  with_items: "{{ db_names }}"
+  tags:
+    - backup
+- name: debug
+  debug:
+    msg: "{{ item }}"
+  with_items: "{{ db_names }}"
+  tags:
+    - test
