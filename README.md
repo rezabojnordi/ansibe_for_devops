@@ -13,7 +13,8 @@ ansible-playbook -i inventory run.yml --tags test
 ## change ip for backup db
 path cd /mysql/
 
-172.16.105.96
-172.16.105.97
-172.16.105.157
+ip1
 
+ip2
+
+ip3
