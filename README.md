@@ -1,9 +1,13 @@
 # ansible_for_devops
 ansible for devops engineer
 
-## backup db
+## backup all_db
 
 ansible-playbook -i inventory run.yml --tags backup
+
+## backup one_by_one_db
+
+ansible-playbook -i inventory run.yml --tags backup_one_by_one
 
 ## check ansible
 

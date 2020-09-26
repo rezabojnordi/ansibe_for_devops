@@ -1,14 +1,12 @@
 ---
-- name: Dump multiple databases
+- name: Restor multiple databases
   mysql_db:
-    state: dump
+    state: import
     name: "{{ item }}"  
     target: "{{ path_backup }}{{ item }}.sql"
-    login_user: root
-    login_password: ""
   with_items: "{{ db_names }}"
   tags:
-    - backup_one_by_one
+    - resotor_one_by_one
 
 - name: debug
   debug:
@@ -16,3 +14,6 @@
   with_items: "{{ db_names }}"
   tags:
     - test
+
+
+
