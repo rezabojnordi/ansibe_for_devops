@@ -9,6 +9,35 @@ ansible-playbook -i inventory run.yml --tags backup
 
 ansible-playbook -i inventory run.yml --tags backup_one_by_one
 
+## backup nova
+
+ansible-playbook -i inventory run.yml --tags nova
+
+## backup keystone
+
+ansible-playbook -i inventory run.yml --tags keystone
+
+## backup neutron
+
+ansible-playbook -i inventory run.yml --tags neutron
+
+## backup cinder
+
+ansible-playbook -i inventory run.yml --tags cinder
+
+## backup placement
+
+ansible-playbook -i inventory run.yml --tags placement
+
+## backup rally
+
+ansible-playbook -i inventory run.yml --tags rally
+
+
+
+
+
+
 ## check ansible
 
 ansible-playbook -i inventory run.yml --tags test
