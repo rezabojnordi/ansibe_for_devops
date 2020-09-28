@@ -4,4 +4,4 @@
   tasks:
     - name: deploy backup service
       import_role:
-        name: mysql_backup
+        name: mysql
