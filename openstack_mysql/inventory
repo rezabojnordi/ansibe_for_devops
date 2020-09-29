@@ -1,6 +1,5 @@
 [all]
 #node1.ansible.local
-172.16.105.96
-172.16.105.97
-172.16.105.157
-
+ip_db1
+ip_db2
+ip_db3
