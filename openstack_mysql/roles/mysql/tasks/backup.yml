@@ -4,8 +4,8 @@
     state: dump
     name: all
     target: "{{ path_backup }}all.sql"
-    login_user: root
-    login_password: ""
+    #    login_user: root
+    #   login_password: ""
   tags:
     - backup
 

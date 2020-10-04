@@ -1,5 +1,4 @@
 [all]
 #node1.ansible.local
-ip_db1
-ip_db2
-ip_db3
+172.16.106.132
+172.16.106.79

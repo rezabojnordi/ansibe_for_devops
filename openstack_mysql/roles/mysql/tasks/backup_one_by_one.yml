@@ -4,8 +4,8 @@
     state: dump
     name: "{{ item }}"  
     target: "{{ path_backup }}{{ item }}.sql"
-    login_user: root
-    login_password: ""
+    #login_user: root
+    #login_password: ""
   with_items: "{{ db_names }}"
   tags:
     - backup_one_by_one
@@ -20,10 +20,10 @@
       - nova_api
       - nova_cell0
     target: "{{ path_backup }}nova_all.sql"
-    login_user: root
-    login_password: ""
+    #login_user: root
+    #login_password: ""
   tags:
-    - nova
+    - nova_back
 
 ### backup cinder db "
 - name: cinder backup
@@ -31,10 +31,10 @@
     state: dump
     name: cinder
     target: "{{ path_backup }}cinder.sql"
-    login_user: root
-    login_password: ""
+    #login_user: root
+    #login_password: ""
   tags:
-    - cinder
+    - cinder_back
 
 
 ### backup keystone db "
@@ -43,10 +43,10 @@
     state: dump
     name: keystone
     target: "{{ path_backup }}keystone.sql"
-    login_user: root
-    login_password: ""
+    #login_user: root
+    #login_password: ""
   tags:
-    - keystone
+    - keystone_back
 
 ### backup neutron db "
 - name: neutron backup
@@ -54,10 +54,10 @@
     state: dump
     name: neutron
     target: "{{ path_backup }}neutron.sql"
-    login_user: root
-    login_password: ""
+    #    login_user: root
+    #login_password: ""
   tags:
-    - neutron
+    - neutron_back
 
 
 ### backup placement db "
@@ -66,10 +66,10 @@
     state: dump
     name: placement
     target: "{{ path_backup }}placement.sql"
-    login_user: root
-    login_password: ""
+    #login_user: root
+    #login_password: ""
   tags:
-    - placement 
+    - placement_back
 
 
 ### backup rally db "
@@ -78,10 +78,10 @@
     state: dump
     name: rally
     target: "{{ path_backup }}rally.sql"
-    login_user: root
-    login_password: ""
+    #login_user: root
+    #login_password: ""
   tags:
-    - rally 
+    - rally_back
 
 
 

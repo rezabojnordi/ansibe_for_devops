@@ -17,48 +17,48 @@
       - nova_cell0  
     target: "{{ path_backup }}nova_all.sql"
   tags:
-    - nova
+    - nova_restore
 
 - name: Restor cinder databases
-  mysql_db:
+  mysql_db: 
     state: import
     name: cinder 
-    target: "{{ path_backup }}cinder.sql"
+    target: "/home/cinder.sql"
   tags:
-    - cinder
+    - cinder_restore
 
 - name: Restor keystone databases
-  mysql_db:
+  mysql_db:  
     state: import
     name: keystone
     target: "{{ path_backup }}keystone.sql"
   tags:
-    - keystone
+    - keystone_restore
 
 - name: Restor neutron databases
-  mysql_db:
+  mysql_db: 
     state: import
     name: neutron 
     target: "{{ path_backup }}neutron.sql"
   tags:
-    - neutron
+    - neutron_restore
 
 - name: Restor placement databases
-  mysql_db:
+  mysql_db: 
     state: import
     name: placement 
     target: "{{ path_backup }}placement.sql"
   tags:
-    - placement
+    - placement_restore
 
 
 - name: Restor rally databases
-  mysql_db:
+  mysql_db: 
     state: import
     name: rally 
     target: "{{ path_backup }}rally.sql"
   tags:
-    - rally
+    - rally_restore
 
 
 
