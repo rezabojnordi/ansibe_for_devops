@@ -7,18 +7,21 @@
     #  tags:
     #   - backup
 
- - name: backup galera cluster
-   mysql_db:
-     state: dump
-     name: all
-     target: "{{ path_backup }}all.sql"
-   tags:
-      - backup
+- name: backup galera cluster
+  mysql_db:
+    state: dump
+    name: all
+    target: "{{ path_backup }}all.sql"
+  tags:
+    - backup
 
- - name: scp backup to server
-   shell: scp "{{ path_backup }}all.sql" "/home/"
-   tags:
-      - backup
+- name: scp backup to server
+  shell: scp "{{ path_backup }}all.sql" "/home/"
+  tags:
+    - backup
 
-
+- name: restart mariadb
+  service: name=mysql enabled=yes state=restarted
+  tags:
+    - mysql_restart
 

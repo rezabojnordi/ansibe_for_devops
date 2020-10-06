@@ -4,4 +4,3 @@
 - include: backup_one_by_one.yml
 - include: restore.yml
 - include: restore_one_by_one.yml
-- include: lxc_configuration_galera_cluster.yml
