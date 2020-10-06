@@ -1,15 +1,24 @@
 ---
 - name: Dump multiple databases
   mysql_db:
-    state: dump
+    state: dump 
     name: "{{ item }}"  
-    target: "{{ path_backupup }}{{ item }}.sql"
+    target: "{{ path_backup }}{{ item }}.sql"
     #login_user: root
     #login_password: ""
   with_items: "{{ db_names }}"
   tags:
-    - backup_one_by_one
+    - backup_one_by_one  
 
+- name: scp backup
+  fetch:
+    src: "{{ path_backup }}{{ item }}.sql"
+    dest: "{{ path_backup }}{{ item }}.sql"
+    flat: yes
+    validate_checksum: no
+  with_items: "{{ db_names }}"
+  tags:
+    - backup_one_by_one
 
 ### backup nova db "
 - name: nova backup
@@ -19,18 +28,18 @@
       - nova
       - nova_api
       - nova_cell0
-    target: "{{ path_backupup }}nova_all.sql"
+    target: "{{ path_backup }}nova_all.sql"
     #login_user: root
     #login_password: ""
   tags:
-    - nova_backup
+     - nova_backup
 
 ### backup cinder db "
 - name: cinder backup
-  mysql_db:
+  mysql_db: 
     state: dump
     name: cinder
-    target: "{{ path_backupup }}cinder.sql"
+    target: "{{ path_backup }}cinder.sql"
     #login_user: root
     #login_password: ""
   tags:
@@ -39,10 +48,10 @@
 
 ### backup keystone db "
 - name: keystone backup
-  mysql_db:
-    state: dump
+  mysql_db: 
+    state : dump
     name: keystone
-    target: "{{ path_backupup }}keystone.sql"
+    target: "{{ path_backup }}keystone.sql"
     #login_user: root
     #login_password: ""
   tags:
@@ -53,42 +62,42 @@
   mysql_db:
     state: dump
     name: neutron
-    target: "{{ path_backupup }}neutron.sql"
+    target:  " {{ path_ backup }}neutron.sql"
     #    login_user: root
     #login_password: ""
   tags:
-    - neutron_backup
+    - neutron_backup 
 
 
 ### backup placement db "
 - name: placement backup
-  mysql_db:
+  mysql_db: 
     state: dump
     name: placement
-    target: "{{ path_backupup }}placement.sql"
+    target:  "{{ path_backup }}placement.sql"
     #login_user: root
     #login_password: ""
   tags:
-    - placement_backup
+    - placement_backup 
 
 
 ### backup rally db "
 - name: rally backup
-  mysql_db:
+  mysql_db:  
     state: dump
     name: rally
-    target: "{{ path_backupup }}rally.sql"
+    target: "{{ path_backup }}rally.sql"
     #login_user: root
     #login_password: ""
   tags:
-    - rally_backup
-
+     -  rally_backup
+ 
 
 
 ## check ansible
 
 - name: debug
-  debug:
+  debug :  
     msg: "{{ item }}"
   with_items: "{{ db_names }}"
   tags:
