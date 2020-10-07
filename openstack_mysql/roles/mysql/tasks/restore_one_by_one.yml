@@ -1,5 +1,5 @@
 ---
-- name: Restor multiple databases
+- name: Restore multiple databases
   mysql_db:
     state: import
     name: "{{ item }}"  
@@ -8,6 +8,18 @@
   tags:
     - resotor_one_by_one
 
+
+
+- name: copy backup file for restore
+  copy:  
+    src:  "{{ backup_storage_path }}{{ item }}.sql" 
+    dest: "{{ path_backup }}}{{ item }}.sql" 
+    mode: '0655'
+  tags:
+    - restore_one_by_one
+
+
+#==========================nova==================================
 - name: Restor nova databases
   mysql_db:
     state: import
@@ -19,6 +31,18 @@
   tags:
     - nova_restore
 
+- name: copy backup file for restor
+  copy:  
+    src:  "{{ backup_storage_path }}nova_all.sql"  
+    dest: "{{ path_backup }}nova_all.sql" 
+    mode: '0655'
+  tags:
+    - nova_restore
+
+
+#===========================end nova ===========================
+#
+#===========================cinder==============================
 - name: Restor cinder databases
   mysql_db: 
     state: import
@@ -27,6 +51,18 @@
   tags:
     - cinder_restore
 
+- name: copy backup file for restor
+  copy:  
+    src:  "{{ backup_storage_path }}cinder.sql"  
+    dest: "{{ path_backup }}cinder.sql" 
+    mode: '0655'
+  tags:
+    - cinder_restore
+
+
+#=========================end cinder================================
+#
+#=========================keystone==================================
 - name: Restor keystone databases
   mysql_db:  
     state: import
@@ -35,6 +71,18 @@
   tags:
     - keystone_restore
 
+- name: copy backup file for restor
+  copy:  
+    src:  "{{ backup_storage_path }}keystone.sql"  
+    dest: "{{ path_backup }}keystone.sql" 
+    mode: '0655'
+  tags:
+    - keystone_restore
+
+
+#======================end keystone======================================
+#
+#====================== neutron =========================================
 - name: Restor neutron databases
   mysql_db: 
     state: import
@@ -43,6 +91,18 @@
   tags:
     - neutron_restore
 
+- name: copy backup file for restor
+  copy:  
+    src:  "{{ backup_storage_path }}neutron.sql"  
+    dest: "{{ path_backup }}neutron.sql" 
+    mode: '0655'
+  tags:
+    - neutron_restore
+
+
+#======================= end neutron ==================================
+#
+#====================== placement =====================================
 - name: Restor placement databases
   mysql_db: 
     state: import
@@ -51,7 +111,18 @@
   tags:
     - placement_restore
 
+- name: copy backup file for restor
+  copy:  
+    src:  "{{ backup_storage_path }}placement.sql"  
+    dest: "{{ path_backup }}placement.sql" 
+    mode: '0655'
+  tags:
+    - placement_restore
 
+
+#========================end placement ================================
+#
+#======================== rally =======================================
 - name: Restor rally databases
   mysql_db: 
     state: import
@@ -60,21 +131,27 @@
   tags:
     - rally_restore
 
+- name: copy backup file for restor
+  copy:  
+    src:  "{{ backup_storage_path }}rally.sql"  
+    dest: "{{ path_backup }}rally.sql" 
+    mode: '0655'
+  tags:
+    - rally_restore
 
 
 
-
-
+#======================end rally =========================================
 
 
 
 
 - name: debug
-  debug:
+   debug:
     msg: "{{ item }}"
   with_items: "{{ db_names }}"
   tags:
-    - test
+    - debug
 
 
 

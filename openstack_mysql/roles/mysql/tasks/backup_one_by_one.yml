@@ -13,7 +13,7 @@
 - name: scp backup
   fetch:
     src: "{{ path_backup }}{{ item }}.sql"
-    dest: "{{ path_backup }}{{ item }}.sql"
+    dest: "{{ backup_storage_path }}{{ item }}.sql"
     flat: yes
     validate_checksum: no
   with_items: "{{ db_names }}"

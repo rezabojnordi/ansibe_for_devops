@@ -20,36 +20,36 @@
 #    - galera
 
 - name: run setup-hosts
-  shell : " {{ setup_hosts }} -l  infra1 -l infra1_galera_container-5b11d5be"
+  shell : " {{ setup_hosts }} -l  infra1 -l {{ infra1_galera }}"
   tags:
      - galera_infra1
  
 - name: run setup-hosts
-  shell : " {{ setup_hosts }} -l infra2 -l infra2_galera_container-b8b8ea27"
+  shell : " {{ setup_hosts }} -l infra2 -l {{ infra2_galera }}"
   tags:
      - galera_infra2
  
  
 - name: run setup-hosts
-  shell : " {{ setup_hosts }} -l  infra3 -l infra3_galera_container-b74ad98e"
+  shell : " {{ setup_hosts }} -l  infra3 -l {{ infra3_galera }}"
   tags:
     - galera_infra3
  
 - name: run setup-infrastructure
-  shell:  " {{ setup_infrastructure }} --limit infra1_galera_container-5b11d5be"
+  shell:  " {{ setup_infrastructure }} --limit {{ infra1_galera }}"
   tags:
     - galera_infra1 
 
  
 - name: run setup-infrastructure
-  shell:  " {{ setup_infrastructure }} --limit infra2_galera_container-b8b8ea27"
+  shell:  " {{ setup_infrastructure }} --limit {{ infra2_galera }}"
   tags:
     - galera_infra2
 
 
  
 - name: run setup-infrastructure
-  shell:  " {{ setup_infrastructure }} --limit infra3_galera_container-b74ad98e"
+  shell:  " {{ setup_infrastructure }} --limit {{ infra3_galera }}"
   tags:
     - galera_infra3
 

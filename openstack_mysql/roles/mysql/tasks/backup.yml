@@ -15,10 +15,18 @@
   tags:
     - backup
 
+
+
 - name: scp backup to server
-  shell: scp "{{ path_backup }}all.sql" "/home/"
+  fetch:
+    src: "{{ path_backup }}all.sql"
+    dest: "{{ backup_storage_path }}all.sql"
+    flat: yes
+    validate_checksum: no
   tags:
     - backup
+
+
 
 - name: restart mariadb
   service: name=mysql enabled=yes state=restarted
