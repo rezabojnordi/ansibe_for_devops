@@ -9,6 +9,20 @@ Test restore your backups on a regular basis, e.g. every two months.
 A weekly full backup combined with daily incremental backup is normally enough. Keeping a number of backups for a period of time is always a good plan, maybe keep each weekly backup for one month. This allows you to recover an older database in case of emergencies or if for some reason you have local backup file corruption
 
 <img src=./img/1.png></img>
+
+
+
+## backup openstack databse
+https://github.com/rezabojnordi/ansibe_for_devops/tree/master/openstack_mysql
+
+
+## destroy lxc container in galera cluster
+https://github.com/rezabojnordi/ansibe_for_devops/tree/master/destroy_container_galera_cluster
+
+## reconviguration galera cluster in openstack (lxc)
+https://github.com/rezabojnordi/ansibe_for_devops/tree/master/reconfigure_galera_cluster
+
+
 ## change ip for backup db
 ###### step1i:
 cd /mysql/
