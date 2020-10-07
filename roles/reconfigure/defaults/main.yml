@@ -20,6 +20,10 @@ db_names:
 infra1_galera: "infra1_galera_container-5b11d5be"
 infra2_galera: "infra2_galera_container-b8b8ea27"
 infra3_galera: "infra3_galera_container-b74ad98e"
+infra_galera:
+  infra1: "infra1_galera_container-5b11d5be"
+  infra2: "infra2_galera_container-b8b8ea27"
+  infra3: "infra3_galera_container-b74ad98e"
 
 setup_hosts: "openstack-ansible /opt/openstack-ansible/playbooks/setup-hosts.yml"
 

@@ -1,7 +1,7 @@
 ---
-- hosts: all
+- hosts: BR
 
   tasks:
     - name: deploy backup service
       import_role:
-        name: mysql
+        name: backup_restore

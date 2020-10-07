@@ -1,7 +1,7 @@
 ---
-- hosts: all
+- hosts: reconfigure
 
   tasks:
     - name: setup openstack ansible
       import_role:
-        name: openstack_ansible_playbook
+        name: reconfigure
