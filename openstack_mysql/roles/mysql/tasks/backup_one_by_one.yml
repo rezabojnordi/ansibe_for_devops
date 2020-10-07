@@ -96,9 +96,9 @@
 
 ## check ansible
 
-- name: debug
-  debug :  
-    msg: "{{ item }}"
-  with_items: "{{ db_names }}"
-  tags:
-    - test
+       #- name: debug
+       #debug :  
+       #msg: "{{ item }}"
+       #with_items: "{{ db_names }}"
+       # tags:
+       # - test

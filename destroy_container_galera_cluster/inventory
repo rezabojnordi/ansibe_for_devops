@@ -5,7 +5,7 @@
 #node1.ansible.local
 
 [infra]
-infra1
-#infra2
+#infra1
+infra2
 #infra3
 

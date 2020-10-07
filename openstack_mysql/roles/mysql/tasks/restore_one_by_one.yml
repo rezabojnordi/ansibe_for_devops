@@ -146,12 +146,12 @@
 
 
 
-- name: debug
-   debug:
-    msg: "{{ item }}"
-  with_items: "{{ db_names }}"
-  tags:
-    - debug
+      #- name: debug
+      #debug:
+      # msg: "{{ item }}"
+      #with_items: "{{ db_names }}"
+      # tags:
+      # - debug
 
 
 
