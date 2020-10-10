@@ -2,9 +2,9 @@
 127.0.0.1
 
 [BR]
-galera_container1
+#galera_container1
 galera_container2
-galera_container3
+#galera_container3
 
 [destroy]
 infra1

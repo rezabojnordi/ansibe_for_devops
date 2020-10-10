@@ -1,6 +1,5 @@
 ---
 - hosts: BR
-
   tasks:
     - name: deploy backup service
       import_role:

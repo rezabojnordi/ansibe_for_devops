@@ -22,7 +22,7 @@
 - name: run setup-hosts
   shell : " {{ setup_hosts }} -l  {{ inventory_hostname }} -l {{ infra_galera.{{ inventory_hostname }} }}"
   tags:
-     - galera_infra1
+     - galera_infra
  
 #- name: run setup-hosts
 #  shell : " {{ setup_hosts }} -l infra2 -l {{ infra2_galera }}"
@@ -38,7 +38,7 @@
 - name: run setup-infrastructure
   shell:  " {{ setup_infrastructure }} --limit {{ infra_galera.{{ inventory_hostname }} }}"
   tags:
-    - galera_infra1 
+    - galera_infra 
 
  
 #- name: run setup-infrastructure
