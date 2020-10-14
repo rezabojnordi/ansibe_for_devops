@@ -1,0 +1,12 @@
+ - name: "Node: Check list of Node.js apps running."
+ command: forever list
+ register: forever_list
+ changed_when: false
+
+ - name: "Node: Start example Node.js app."
+ command: forever start {{ node_apps_location }}/app/app.js
+ when: "forever_list.stdout.find(node_apps_location + \
+ '/app/app.js') == -1"
+
+
+

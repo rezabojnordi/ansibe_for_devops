@@ -1,0 +1,15 @@
+- name: Download a file, using example-proxy as a proxy.
+get_url: url=http://www.example.com/file.tar.gz dest=~/Downloads/
+environment:
+http_proxy: http://example-proxy:80/
+
+--------------------------------------------------------------------------
+vars:
+proxy_vars:
+http_proxy: http://example-proxy:80/
+https_proxy: https://example-proxy:443/
+[etc...]
+tasks:
+- name: Download a file, using example-proxy as a proxy.
+get_url: url=http://www.example.com/file.tar.gz dest=~/Downloads/
+environment: proxy_vars

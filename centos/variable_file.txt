@@ -1,0 +1,13 @@
+1 ---
+2 # Variables file 'vars.yml' in the same folder as the playbook.
+3 foo: bar
+
+
+
+ ---
+ # Main playbook file.
+ - hosts: example
+ vars_files:
+ - vars.yml
+ tasks:
+ - debug: msg="Variable 'foo' is set to {{ foo }}"

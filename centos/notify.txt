@@ -1,0 +1,15 @@
+handlers:
+- name: restart apache
+service: name=apache2 state=restarted
+
+tasks:
+- name: Enable Apache rewrite module.
+apache2_module: name=rewrite state=present
+notify: restart apache
+
+
+- name: Rebuild application configuration.
+command: /opt/app/rebuild.sh
+notify:
+- restart apache
+- restart memcached
